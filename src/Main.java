@@ -12,7 +12,14 @@ public class Main {
         for (int cycle=0;cycle<30;cycle++) { // n cycles
             for (int residentId = 0; residentId < city.size(); residentId++) { // cycle
                 Glom glom = city.get(residentId);
-                if (glom.birthCycle == cycle) continue;
+                if (glom.birthCycle == cycle) {
+                    if (glom.diesAsInfant()){
+                        glom.isAlive = false;
+                        city.deaths++;
+                        city.infantDeaths++;
+                    }
+                    continue;
+                }
 
                 if (glom.canReproduce() && glom.tryReproduce()) {
                     city.add(new Glom(cycle, 0));
@@ -28,14 +35,15 @@ public class Main {
             city.updatePopulation();
         }
         city.printData();
+        System.out.println(city.get(1));
 
 
-        FileWriter ageWriter = new FileWriter("C:\\Users\\Samue\\IdeaProjects\\Simulation\\src\\ages.csv");
-        ageWriter.write("age\n");
+        FileWriter Writer = new FileWriter("C:\\Users\\Samue\\IdeaProjects\\Simulation\\src\\data.csv");
+        Writer.write("age\n");
         for (Glom glom : city) {
-            if (glom.isAlive) ageWriter.write(Integer.toString(glom.age) + "\n");
+            if (glom.isAlive) Writer.write(Integer.toString(glom.age) + "\n");
         }
-        ageWriter.close();
+        Writer.close();
 
 
 

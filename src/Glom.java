@@ -16,23 +16,27 @@ public class Glom {
     }
 
     public boolean tryReproduce() {
-        return Util.randomChance(40);
+        return Util.randomChance(70);
     }
 
     public boolean tryDie() {
         if (this.age <= 3) {
-            return Util.randomChance(10); //10
+            return Util.randomChance(10.0); //10
         } else if (this.age <= 5) {
-            return Util.randomChance(15); //20
+            return Util.randomChance(15.0); //20
         } else if (this.age <= 7) {
-            return Util.randomChance(30); //50
+            return Util.randomChance(30.0); //50
         } else {
-            return Util.randomChance(60); //90
+            return Util.randomChance(60.0); //90
         }
     }
 
     public boolean canReproduce() {
         return this.isAlive && this.gender == Gender.FEMALE && (this.age >= 2 && this.age <= 5);
+    }
+
+    public boolean diesAsInfant() {
+        return  Util.randomChance(.5);
     }
 
     public void printPopulation(ArrayList<Glom> city) {
@@ -44,6 +48,9 @@ public class Glom {
         return "Glom{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", isAlive=" + isAlive +
+                ", gender=" + gender +
+                ", birthCycle=" + birthCycle +
                 '}';
     }
 }

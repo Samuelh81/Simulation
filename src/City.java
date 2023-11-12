@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class City extends ArrayList<Glom> {
-    public int births, deaths, population, initialPopulation;
+    public int births, deaths, population, initialPopulation, infantDeaths;
 
     public City(int population) {
         this.population = population;
@@ -14,6 +14,7 @@ public class City extends ArrayList<Glom> {
         System.out.printf("       ΔPopulation: %d\n", population-initialPopulation);
         System.out.printf("       Births: %d\n", this.births);
         System.out.printf("       Deaths: %d\n", this.deaths);
+        System.out.printf("       Infant Deaths: %d\n", this.infantDeaths);
     }
 
     public void updatePopulation() {

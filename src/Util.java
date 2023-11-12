@@ -1,7 +1,7 @@
 public class Util {
 
-    public static boolean randomChance(int percentChance) {
-        return ((int) (Math.random() * 100)) < percentChance;
+    public static boolean randomChance(double percentChance) {
+        return  (Math.random() * 100) < percentChance;
     }
 
     public static String randomString(int length) {
